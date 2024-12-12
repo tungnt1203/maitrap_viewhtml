@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Mailtrap Content</title>
+        <style>
+            #content {
+                margin: 20px;
+                padding: 20px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">Loading...</div>
+
+        <script>
+            fetch("/api/mail-content")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.getElementById("content").innerHTML = data;
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    document.getElementById("content").innerHTML =
+                        "Error loading content";
+                });
+        </script>
+    </body>
+</html>
